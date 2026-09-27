@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Vending</title>
+    <link rel="stylesheet" href="vending.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">✿</div>
+            <div>
+                <h1>Beauty <span>Vending</span></h1>
+                <p>PICK YOUR BEAUTY, ANYTIME</p>
+            </div>
+        </div>
+        <nav class="categories">
+            <button class="category active" onclick="filterProducts('all', this)">ทั้งหมด</button>
+            <button class="category" onclick="filterProducts('lip', this)">ลิป</button>
+            <button class="category" onclick="filterProducts('face', this)">รองพื้น</button>
+            <button class="category" onclick="filterProducts('eye', this)">ตา</button>
+            <button class="category" onclick="filterProducts('cheek', this)">แก้ม</button>
+            <button class="category" onclick="filterProducts('nail', this)">เล็บ</button>
+        </nav>
+        <div class="search-box">
+            <span>⌕</span>
+            <input type="text" id="searchInput" placeholder="ค้นหาสินค้า..." oninput="searchProducts()">
+        </div>
+    </header>
+    <main class="container">
+        <section class="products-section">
+            <div id="productGrid" class="product-grid"></div>
+        </section>
+        <aside class="cart">
+            <div class="cart-header">
+                <h2>🛒 ตะกร้าสินค้า</h2>
+                <span id="cartCount" class="cart-count">0</span>
+                <button class="clear-cart" onclick="clearCart()">🗑</button>
+            </div>
+            <div id="cartItems" class="cart-items">
+                <div class="empty-cart">
+                    <div class="empty-icon">🛍️</div>
+                    <p>ยังไม่มีสินค้า</p>
+                    <span>เลือกสินค้าที่ต้องการได้เลย</span>
+                </div>
+            </div>
+            <div class="payment">
+                <div class="total-row">
+                    <span>รวมทั้งหมด</span>
+                    <strong id="total">0 ฿</strong>
+                </div>
+                <div class="money-title">
+                    <span>เงินที่ใส่</span>
+                    <strong id="money">0 ฿</strong>
+                </div>
+                <div class="money-buttons">
+                    <button onclick="insertMoney(20)">20 ฿</button>
+                    <button onclick="insertMoney(50)">50 ฿</button>
+                    <button onclick="insertMoney(100)">100 ฿</button>
+                    <button onclick="insertMoney(500)">500 ฿</button>
+                </div>
+                <div class="change">
+                    <span>เงินทอน</span>
+                    <strong id="change">0 ฿</strong>
+                </div>
+                <button class="buy-button" onclick="buyProducts()">🛒 ซื้อสินค้า</button>
+                <button class="cancel-button" onclick="refund()">↻ ยกเลิก / คืนเงิน</button>
+            </div>
+        </aside>
+    </main>
+    <div id="popup" class="popup">
+        <div class="popup-box">
+            <div class="popup-icon">✓</div>
+            <h2 id="popupTitle">สำเร็จ!</h2>
+            <p id="popupMessage">ดำเนินการเรียบร้อย</p>
+            <button onclick="closePopup()">ตกลง</button>
+        </div>
+    </div>
+    <script src="vending.js"></script>
+</body>
+</html>
